@@ -1,0 +1,2 @@
+## General info
+To use this script you need to put the .py file into your folder with release files(sorted by folders), then create a release_notes.txt file and put all release notes(wihout the "BETA BUILD. MAY CONTAIN SOME ISSUES." text). Then run a script and wait for the results!
