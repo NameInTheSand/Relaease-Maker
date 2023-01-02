@@ -1,4 +1,3 @@
-"""Module providing Function getting the folders."""
 import os
 import json
 import ctypes
@@ -16,7 +15,6 @@ def change_folder_release_notes(
     release_notes_file_path,
     release_type
 ):
-    """Change the release notes for folder files"""
     with open(json_file_path, 'r', encoding="utf8") as f:
         data = json.loads(f.read(), strict=False)
     with open(release_notes_file_path, 'r', encoding="utf8") as f:
@@ -31,7 +29,6 @@ def change_folder_release_notes(
 
 
 def change_release_notes(path, release_notes_file_path, release_type):
-    """Find the file and change release notes for them"""
     json_file_path = None
     apk_file_path = None
     for file in os.listdir(path):
@@ -51,25 +48,22 @@ def change_release_notes(path, release_notes_file_path, release_type):
 
 
 def show_end_message(title, text):
-    """Method to show the message about the operation to user"""
-    return ctypes.windll.user32.MessageBoxW(
-        CONST_STYLE, text, title, CONST_STYLE
-    )
+   ctypes.windll.user32.MessageBoxW(CONST_STYLE, text, title, CONST_STYLE)
 
 
-def enter_the_release_type():
+def enter_release_type():
     input_value = int(
         input("Please, enter the release type. 0 - eval, 1 - prod\n")
     )
     if (input_value not in [CONST_EVAL_RELEASE_TYPE, CONST_PROD_RELEASE_TYPE]):
-        enter_the_release_type()
+        enter_release_type()
     else:
         return input_value
 
 
 if __name__ == '__main__':
     path = os.path.realpath(os.getcwd())
-    release_type = enter_the_release_type()
+    release_type = enter_release_type()
     for _, subdirs, files in os.walk(path):
         for file in files:
             if file.endswith('.txt'):
